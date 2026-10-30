@@ -396,7 +396,7 @@ export function writeSTL(model) {
   const bytes = new ArrayBuffer(84 + 50 * model.faces.length),
     view = new DataView(bytes);
   new Uint8Array(bytes).set(
-    new TextEncoder().encode("Hole Workshop | millimetres"),
+    new TextEncoder().encode("Holemorph | millimetres"),
   );
   view.setUint32(80, model.faces.length, true);
   model.faces.forEach((face, i) => {
