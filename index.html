@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hole Workshop | Resize holes in STL files</title>
+    <meta
+      name="description"
+      content="Import an STL, select cylindrical holes, and enlarge or shrink them. Free browser-based STL hole editing. Your files stay on your device."
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <svg width="34" height="32" viewBox="0 0 34 32" fill="none">
+          <path
+            d="M2 8L17 14L32 8L17 22L2 8Z"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <path d="M17 14V2M17 22V30" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <div><strong>Hole Workshop</strong><span>STL hole editor</span></div>
+      </div>
+      <span class="local">Files stay on your device <i></i></span>
+    </header>
+    <main>
+      <aside class="parts">
+        <h1>Your models</h1>
+        <p class="muted">Import a binary or ASCII STL.</p>
+        <button id="import">Import STL</button
+        ><input id="file" type="file" accept=".stl" multiple hidden /><input
+          id="search"
+          type="search"
+          placeholder="Find a model…"
+          aria-label="Find a part"
+        />
+        <nav id="parts" aria-label="Imported models"></nav>
+        <footer>
+          Original STL files stay untouched.<br />Edited parts download as new
+          files.
+        </footer>
+      </aside>
+      <section class="workspace">
+        <div class="worktop">
+          <div>
+            <h2 id="part-name">Give that hole a better fit.</h2>
+            <p id="part-info">Import an STL to get started</p>
+          </div>
+          <button id="reset-view">Fit view</button>
+        </div>
+        <div id="viewport">
+          <div class="hint">Click a colored hole to select it</div>
+          <div class="legend">
+            <span><i class="available"></i>Detected hole</span
+            ><span><i class="chosen"></i>Selected</span>
+          </div>
+          <div id="status" role="status">
+            Drop an STL here<br /><small
+              >or choose Import STL • Up to 50 MB</small
+            >
+          </div>
+          <div class="view-controls">
+            <button data-view="top">Top</button
+            ><button data-view="front">Front</button
+            ><button data-view="side">Side</button
+            ><button data-view="iso">3D</button>
+          </div>
+        </div>
+        <div class="workfoot">
+          <span>Drag to orbit · Scroll to zoom · Right-drag to pan</span
+          ><label
+            ><input id="preview" type="checkbox" checked /> Preview edit</label
+          >
+        </div>
+      </section>
+      <aside class="settings">
+        <h2>Select holes</h2>
+        <p class="muted">
+          Pick holes in the model or the list below. Check their size and
+          location before exporting.
+        </p>
+        <div class="selection-actions">
+          <button id="select-inserts">Select all holes</button
+          ><button id="clear">Clear</button>
+        </div>
+        <div id="holes"></div>
+        <div class="export-panel">
+          <label for="direction">Change selected diameters</label
+          ><select id="direction" aria-label="Resize direction">
+            <option value="-1">Make smaller</option>
+            <option value="1">Make bigger</option></select
+          ><label class="amount-label" for="reduction">Change by</label>
+          <div class="number-field">
+            <input
+              id="reduction"
+              type="number"
+              value="0.5"
+              min="0.01"
+              max="100"
+              step="0.05"
+            /><span>mm</span>
+          </div>
+          <p id="change-info">Select a hole to see its new diameter.</p>
+          <button id="export" disabled>Download edited STL</button>
+          <p id="export-status" aria-live="polite"></p>
+          <small
+            >STL units are assumed to be millimetres. Complete cylindrical holes
+            only; inspect the exported mesh before printing.</small
+          >
+        </div>
+      </aside>
+    </main>
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
