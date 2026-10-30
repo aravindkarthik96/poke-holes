@@ -1,16 +1,16 @@
-# pokeholes
+# poke-holes
 
 A browser-based STL editor for adjusting cylindrical hole diameters. Import your own model, select holes in the 3D view or list, make them bigger or smaller, preview the result, and download a new STL.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Faravindkarthik96%2Fpokeholes)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Faravindkarthik96%2Fpoke-holes)
 
 ## Use it locally
 
 Requires **Node.js 22.12 or newer** and npm.
 
 ```sh
-git clone https://github.com/aravindkarthik96/pokeholes.git
-cd pokeholes
+git clone https://github.com/aravindkarthik96/poke-holes.git
+cd poke-holes
 npm ci
 npm run dev
 ```
